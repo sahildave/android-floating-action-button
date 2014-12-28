@@ -1,4 +1,4 @@
-package com.getbase.floatingactionbutton;
+package in.sahildave.floatingactionbutton;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;

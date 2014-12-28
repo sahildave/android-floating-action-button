@@ -1,7 +1,8 @@
-package com.getbase.floatingactionbutton.sample;
+package in.sahidave.floatingactiobutton.sample;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import in.sahildave.floatingactionbutton.FloatingActionButton;
+import in.sahildave.floatingactionbutton.FloatingActionsMenu;
+import in.sahildave.floatingactionbutton.sample.R;
 
 import android.app.Activity;
 import android.os.Bundle;
