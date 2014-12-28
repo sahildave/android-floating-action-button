@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp"/>
 
-    <in.sahildave.floatingactionbutton.AddFloatingActionButton
+    <in.sahildave.floatingactionbutton.PlusFloatingActionButton
         android:id="@+id/semi_transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"/>
 
-    <in.sahildave.floatingactionbutton.AddFloatingActionButton
+    <in.sahildave.floatingactionbutton.PlusFloatingActionButton
         android:id="@+id/normal_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"/>
 
-    <in.sahildave.floatingactionbutton.AddFloatingActionButton
+    <in.sahildave.floatingactionbutton.PlusFloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/normal_plus"

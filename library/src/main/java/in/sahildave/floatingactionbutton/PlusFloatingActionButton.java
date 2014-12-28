@@ -12,25 +12,25 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 
-public class AddFloatingActionButton extends FloatingActionButton {
+public class PlusFloatingActionButton extends FloatingActionButton {
     int mPlusColor;
 
-    public AddFloatingActionButton(Context context) {
+    public PlusFloatingActionButton(Context context) {
         this(context, null);
     }
 
-    public AddFloatingActionButton(Context context, AttributeSet attrs) {
+    public PlusFloatingActionButton(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public AddFloatingActionButton(Context context, AttributeSet attrs, int defStyle) {
+    public PlusFloatingActionButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
     @Override
     void init(Context context, AttributeSet attributeSet) {
-        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.AddFloatingActionButton, 0, 0);
-        mPlusColor = attr.getColor(R.styleable.AddFloatingActionButton_fab_plusIconColor, getColor(android.R.color.white));
+        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.PlusFloatingActionButton, 0, 0);
+        mPlusColor = attr.getColor(R.styleable.PlusFloatingActionButton_fab_plusIconColor, getColor(android.R.color.white));
         attr.recycle();
 
         super.init(context, attributeSet);
