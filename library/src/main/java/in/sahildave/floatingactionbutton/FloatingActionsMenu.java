@@ -1,7 +1,5 @@
 package in.sahildave.floatingactionbutton;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -19,6 +17,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
+
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.AnimatorSet;
 
 public class FloatingActionsMenu extends ViewGroup {
     public static final int EXPAND_UP = 0;
@@ -253,8 +255,8 @@ public class FloatingActionsMenu extends ViewGroup {
                     float collapsedTranslation = plusButtonY - childY;
                     float expandedTranslation = 0f;
 
-                    child.setTranslationY(mExpanded ? expandedTranslation : collapsedTranslation);
-                    child.setAlpha(mExpanded ? 1f : 0f);
+                    ViewHelper.setTranslationY(child, mExpanded ? expandedTranslation : collapsedTranslation);
+                    ViewHelper.setAlpha(child,mExpanded ? 1f : 0f);
 
                     LayoutParams params = (LayoutParams) child.getLayoutParams();
                     params.mCollapseDir.setFloatValues(expandedTranslation, collapsedTranslation);
@@ -268,8 +270,8 @@ public class FloatingActionsMenu extends ViewGroup {
 
                         label.layout(labelLeft, labelTop, labelsRight, labelTop + label.getMeasuredHeight());
 
-                        label.setTranslationY(mExpanded ? expandedTranslation : collapsedTranslation);
-                        label.setAlpha(mExpanded ? 1f : 0f);
+                        ViewHelper.setTranslationY(label, mExpanded ? expandedTranslation : collapsedTranslation);
+                        ViewHelper.setAlpha(label,mExpanded ? 1f : 0f);
 
                         LayoutParams labelParams = (LayoutParams) label.getLayoutParams();
                         labelParams.mCollapseDir.setFloatValues(expandedTranslation, collapsedTranslation);
@@ -306,8 +308,8 @@ public class FloatingActionsMenu extends ViewGroup {
                     float collapsedTranslation = addButtonX - childX;
                     float expandedTranslation = 0f;
 
-                    child.setTranslationX(mExpanded ? expandedTranslation : collapsedTranslation);
-                    child.setAlpha(mExpanded ? 1f : 0f);
+                    ViewHelper.setTranslationX(child, mExpanded ? expandedTranslation : collapsedTranslation);
+                    ViewHelper.setAlpha(child,mExpanded ? 1f : 0f);
 
                     LayoutParams params = (LayoutParams) child.getLayoutParams();
                     params.mCollapseDir.setFloatValues(expandedTranslation, collapsedTranslation);
@@ -357,27 +359,27 @@ public class FloatingActionsMenu extends ViewGroup {
         public LayoutParams(ViewGroup.LayoutParams source) {
             super(source);
 
+            mExpandAlpha = ObjectAnimator.ofFloat(this, "alpha",
+                    0f, 1f).setDuration(ANIMATION_DURATION);
+
+            mCollapseAlpha = ObjectAnimator.ofFloat(this, "alpha",
+                    1f, 0f).setDuration(ANIMATION_DURATION);
+
             mExpandDir.setInterpolator(sExpandInterpolator);
             mExpandAlpha.setInterpolator(sAlphaExpandInterpolator);
             mCollapseDir.setInterpolator(sCollapseInterpolator);
             mCollapseAlpha.setInterpolator(sCollapseInterpolator);
 
-            mCollapseAlpha.setProperty(View.ALPHA);
-            mCollapseAlpha.setFloatValues(1f, 0f);
-
-            mExpandAlpha.setProperty(View.ALPHA);
-            mExpandAlpha.setFloatValues(0f, 1f);
-
             switch (mExpandDirection) {
                 case EXPAND_UP:
                 case EXPAND_DOWN:
-                    mCollapseDir.setProperty(View.TRANSLATION_Y);
-                    mExpandDir.setProperty(View.TRANSLATION_Y);
+                    mCollapseDir.setPropertyName("translationY");
+                    mExpandDir.setPropertyName("translationY");
                     break;
                 case EXPAND_LEFT:
                 case EXPAND_RIGHT:
-                    mCollapseDir.setProperty(View.TRANSLATION_X);
-                    mExpandDir.setProperty(View.TRANSLATION_X);
+                    mCollapseDir.setPropertyName("translationX");
+                    mExpandDir.setPropertyName("translationX");
                     break;
             }
 
